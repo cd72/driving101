@@ -1,7 +1,7 @@
 var config = {
     type: Phaser.AUTO,
-    width: 300,
-    height: 300,
+    width: 360,
+    height: 640,
     physics: {
         default: 'matter',
         matter: {
@@ -24,13 +24,11 @@ var player;
 var game = new Phaser.Game(config);
 var speed = 0.04;
 
-function preload ()
-{
+function preload () {
     this.load.image('car', 'assets/car.png');
 }
 
-function create ()
-{
+function create () {
     cursors = this.input.keyboard.createCursorKeys();
     //this.input.keyboard.on(cursors.left, rotateLeft);
     cursors.left.addListener('down', turnLeft)
@@ -43,14 +41,14 @@ function create ()
     
     car.thrust(speed);
     
-    this.matter.world.setBounds(0, 0, 300, 300);
+    this.matter.world.setBounds(0, 0, 360, 640);
     
     
-    const leftButton = this.add.text(50, 250, 'Left', { fill: '#0f0' });
+    const leftButton = this.add.text(50, 600, 'Left', { fill: '#0f0' });
     leftButton.setInteractive();    
     leftButton.on('pointerdown', turnLeft);
  
-    const rightButton = this.add.text(150, 250, 'Right', { fill: '#0f0' });
+    const rightButton = this.add.text(260, 600, 'Right', { fill: '#0f0' });
     rightButton.setInteractive();
     rightButton.on('pointerdown', turnRight);
 
@@ -75,13 +73,3 @@ function update ()
 {
 }
 
-function render() {
-
-    //game.debug.spriteInfo(car, 32, 32);
-    // game.debug.text('angularVelocity: ' + player.body.angularVelocity, 32, 200);
-    // game.debug.text('angularAcceleration: ' + player.body.angularAcceleration, 32, 232);
-    // game.debug.text('angularDrag: ' + player.body.angularDrag, 32, 264);
-    // game.debug.text('deltaZ: ' + player.body.deltaZ(), 32, 296);
-    game.debug.text('Speed: ' + car.body.speed, 32, 100);
-
-}
