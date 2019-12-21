@@ -1,7 +1,7 @@
 var config = {
     type: Phaser.AUTO,
-    width: 200,
-    height: 200,
+    width: 300,
+    height: 400,
     physics: {
         default: 'matter',
         matter: {
@@ -43,7 +43,7 @@ function create ()
     
     car.thrust(speed);
     
-    this.matter.world.setBounds(0, 0, 200, 200);
+    this.matter.world.setBounds(0, 0, 300, 400);
 }
 
 
