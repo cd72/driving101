@@ -9,7 +9,7 @@ var config = {
     physics: {
         default: 'matter',
         matter: {
-            debug: true,
+            debug: false,
             gravity: {
                 x: 0,
                 y: 0
@@ -46,8 +46,7 @@ function create () {
     car.thrust(speed);
     
     this.matter.world.setBounds(0, 0, 360, 640);
-    
-    
+        
     const leftButton = this.add.text(50, 600, 'Left', { fill: '#0f0' });
     leftButton.setInteractive();    
     leftButton.on('pointerdown', turnLeft);
@@ -57,7 +56,6 @@ function create () {
     rightButton.on('pointerdown', turnRight);
 
 }
-
 
 function turnLeft() {
     console.log('Hello from the left Key!');
