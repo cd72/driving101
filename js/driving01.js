@@ -28,6 +28,26 @@ var player;
 var game = new Phaser.Game(config);
 var speed = 0.04;
 
+async function turnLeft() {
+    console.log('Hello from the left Key!');
+    car.setVelocity(0,0);
+    car.angle = car.angle - 45;
+    await sleep(50);
+    car.angle = car.angle - 45;
+    car.thrust(speed);
+    
+}
+    
+async function turnRight() {
+    console.log('Hello from the right Key!');
+    car.setVelocity(0,0)
+    car.angle = car.angle + 45;
+    await sleep(50)
+    car.angle = car.angle + 45;
+    car.thrust(speed);
+    
+}
+
 function createCar(scene) {
     car = scene.matter.add.image(180, 600, 'car');
     car.setAngle(-90);
@@ -78,28 +98,6 @@ function create () {
 
 }
 
-function turnLeft() {
-    console.log('Hello from the left Key!');
-    car.setVelocity(0,0)
-    car.angle = car.angle - 45;
-    
-    sleep(50).then(() => {
-        car.angle = car.angle - 45;
-        car.thrust(speed);
-    })
-    
-}
-    
-function turnRight() {
-    console.log('Hello from the right Key!');
-    car.setVelocity(0,0)
-    car.angle = car.angle + 45;
-    
-    sleep(50).then(() => {
-        car.angle = car.angle + 45;
-        car.thrust(speed);
-    })
-}
 
 function update ()
 {
