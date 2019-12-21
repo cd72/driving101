@@ -44,6 +44,16 @@ function create ()
     car.thrust(speed);
     
     this.matter.world.setBounds(0, 0, 300, 300);
+    
+    
+    const leftButton = this.add.text(50, 250, 'Left', { fill: '#0f0' });
+    leftButton.setInteractive();    
+    leftButton.on('pointerdown', turnLeft);
+ 
+    const rightButton = this.add.text(150, 250, 'Right', { fill: '#0f0' });
+    rightButton.setInteractive();
+    rightButton.on('pointerdown', turnRight);
+
 }
 
 
