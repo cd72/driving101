@@ -47,11 +47,11 @@ function create () {
     
     this.matter.world.setBounds(0, 0, 360, 640);
         
-    const leftButton = this.add.text(50, 600, 'Left', { fill: '#0f0' });
+    const leftButton = this.add.text(20, 600, 'Left', { fill: '#0f0', fontSize: 36 });
     leftButton.setInteractive();    
     leftButton.on('pointerdown', turnLeft);
  
-    const rightButton = this.add.text(260, 600, 'Right', { fill: '#0f0' });
+    const rightButton = this.add.text(230, 600, 'Right', { fill: '#0f0', fontSize: 36 });
     rightButton.setInteractive();
     rightButton.on('pointerdown', turnRight);
 
