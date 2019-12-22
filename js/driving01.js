@@ -45,11 +45,10 @@ async function turnRight() {
     await sleep(50)
     car.angle = car.angle + 45;
     car.thrust(speed);
-    
 }
 
 function createCar(scene) {
-    car = scene.matter.add.image(180, 600, 'car');
+    car = scene.matter.add.image(50, 600, 'car');
     car.setAngle(-90);
     car.setFrictionAir(0.0);
     car.setMass(10);
@@ -77,7 +76,22 @@ function createOnScreenControls(scene) {
 }
 
 function createBuildings(scene) {
-    line1 = scene.add.line(0,0,10,10,400,400,0xff0000);
+    //rect1 = scene.add.rectangle(60,100,10,100,400,0xff0000);
+    rect1_visual = scene.add.rectangle(10,500,10,150,0x80ffff);
+    rect1 = scene.matter.add.rectangle(10,500,10,150,{ isStatic: true });
+    rect2_visual = scene.add.rectangle(85,420,160,10,0x80ffff);
+    rect2 = scene.matter.add.rectangle(85,420,160,10,{ isStatic: true });
+    rect3_visual = scene.add.rectangle(90,550,10,90,0x80ffff);
+    rect3 = scene.matter.add.rectangle(90,550,10,90,{ isStatic: true });
+    rect4_visual = scene.add.rectangle(10,520,10,150,0x80ffff);
+    rect4 = scene.matter.add.rectangle(10,520,10,150,{ isStatic: true });
+    
+    //rect3 = [100,300,200,10];
+    //r3 = scene.add.rectangle.apply(rect3,0x80ffff,128);
+    //r4 = scene.matter.add.rectangle.apply(rect3,{ isStatic: true });
+    
+    //scene.physics.add.existing(line1)
+    //line1.body.collideWorldBounds = true;
 }
 
 function preload () {
@@ -95,6 +109,11 @@ function create () {
     createOnScreenControls(this);
     
     createBuildings(this);
+    
+    this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
+        console.log('collision');
+        //let gameOverText = this.add.text(game.config.width / 2, game.config.height / 2, 'GAME OVER', { fontSize: '32px', fill: '#fff' });
+    })
 
 }
 
